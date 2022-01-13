@@ -1,0 +1,13 @@
+{
+  "name": "conex",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix back\" \"npm run start --prefix front\""
+  }
+}
