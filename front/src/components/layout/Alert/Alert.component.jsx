@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const Alert = () => {
-	console.log("JE SUIS RENDER");
 	const alerts = useSelector((state) => state.alert);
 
 	return (

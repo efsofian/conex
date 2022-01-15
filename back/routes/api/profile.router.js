@@ -4,6 +4,7 @@ const { check, validationResult } = require("express-validator")
 const auth = require("../../middleware/auth")
 const Profile = require("../../models/profile.mongo")
 const User = require("../../models/user.mongo")
+const Post = require("../../models/post.mongo")
 
 const router = express.Router()
 
@@ -190,6 +191,7 @@ router.put(
 
 router.delete("/", auth, async (req, res) => {
     try {
+        await Post.deleteMany({ user: req.user.id })
         await Profile.findOneAndRemove({ user: req.user.id })
         await User.findOneAndRemove({ _id: req.user.id })
         res.json({ msg: "User deleted" })

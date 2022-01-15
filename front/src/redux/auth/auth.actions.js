@@ -8,6 +8,7 @@ import {
 	LOGIN_FAIL,
 	LOG_OUT,
 } from "./auth.types";
+import { CLEAR_PROFILE } from "../profile/profile.types";
 import { setAlert } from "../alert/alert.actions";
 import sethAuthToken from "../../utils/setAuthToken";
 
@@ -28,15 +29,15 @@ export const register =
 			});
 			dispatch(loadUser());
 		} catch (e) {
-			console.log(e.response.data);
-			const errors = e.response.data.error;
+			const errors = e.response.data.errors;
 			if (errors) {
 				console.log("here");
+
 				errors.forEach((error) =>
 					dispatch(setAlert(error.msg, "danger", 5000))
 				);
 			}
-			console.log("here");
+			console.log("dddd");
 			dispatch({
 				type: REGISTER_FAIL,
 			});
@@ -89,5 +90,6 @@ export const loadUser = () => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch) => {
+	dispatch({ type: CLEAR_PROFILE });
 	dispatch({ type: LOG_OUT });
 };
