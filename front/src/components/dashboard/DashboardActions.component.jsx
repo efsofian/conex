@@ -1,9 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const DashboardActions = () => {
-	const profile = useSelector((state) => state.profile);
 	return (
 		<div className="dash-buttons">
 			<Link to="/edit-profile" className="btn btn-light">

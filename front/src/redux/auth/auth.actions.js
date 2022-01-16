@@ -31,13 +31,10 @@ export const register =
 		} catch (e) {
 			const errors = e.response.data.errors;
 			if (errors) {
-				console.log("here");
-
 				errors.forEach((error) =>
 					dispatch(setAlert(error.msg, "danger", 5000))
 				);
 			}
-			console.log("dddd");
 			dispatch({
 				type: REGISTER_FAIL,
 			});
@@ -59,13 +56,10 @@ export const login = (email, password) => async (dispatch) => {
 		});
 		dispatch(loadUser());
 	} catch (e) {
-		console.log(e.response.data);
 		const errors = e.response.data.errors;
 		if (errors) {
-			console.log("est on la");
 			errors.forEach((error) => dispatch(setAlert(error.msg, "danger", 5000)));
 		}
-		console.log("here");
 		dispatch({
 			type: LOGIN_FAIL,
 		});

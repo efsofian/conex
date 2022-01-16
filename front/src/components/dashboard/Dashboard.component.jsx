@@ -30,7 +30,8 @@ const Dashboard = () => {
 
 	useEffect(() => {
 		dispatch(getCurrentProfile());
-	}, [dispatch]);
+		// eslint-disable-next-line
+	}, []);
 
 	if (isAuthenticated && profile.loading && profile.profile == null) {
 		return <Spinner />;
@@ -40,10 +41,10 @@ const Dashboard = () => {
 		return <Navigate to="/" />;
 	}
 	return (
-		<>
+		<section className="container">
 			<h1 className="large text-primary">Dashboard</h1>
 			<p className="lead">
-				<i className="fas fa-user">Welcome {user && name} </i>
+				<i className="fas fa-user"> Welcome {user && name} </i>
 			</p>
 			{profile.profile !== null ? (
 				<>
@@ -66,7 +67,7 @@ const Dashboard = () => {
 					</Link>
 				</>
 			)}
-		</>
+		</section>
 	);
 };
 

@@ -58,7 +58,6 @@ router.get("/:id", auth, async (req, res) => {
 })
 
 router.delete("/:idPost", auth, async (req, res) => {
-    console.log(`=> \n\n${JSON.stringify(req.user)}\n\n`)
     const idUser = req.user.id
     const { idPost } = req.params
     try {

@@ -2,7 +2,6 @@ import React from "react";
 import spinner from "./spinner.gif";
 
 const Spinner = () => {
-	console.log(`spinnered`);
 	return (
 		<>
 			<img

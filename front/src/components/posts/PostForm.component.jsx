@@ -1,27 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
-import { addComment } from "../../redux/post/post.actions";
-const CommentForm = ({ postId }) => {
-	const [text, setText] = useState("");
+import { addPost } from "../../redux/post/post.actions";
+
+const PostForm = () => {
 	const dispatch = useDispatch();
+	const [text, setText] = React.useState("");
 	return (
 		<div className="post-form">
 			<div className="bg-primary p">
-				<h3>Leave a Comment</h3>
+				<h3>Say Something...</h3>
 			</div>
 			<form
 				className="form my-1"
 				onSubmit={(e) => {
 					e.preventDefault();
 
-					dispatch(addComment(postId, { text }));
+					dispatch(addPost({ text }));
 					setText("");
 				}}>
 				<textarea
 					name="text"
 					cols="30"
 					rows="5"
-					placeholder="Create a comment"
+					placeholder="Create a post"
 					value={text}
 					onChange={(e) => setText(e.target.value)}
 					required></textarea>
@@ -31,4 +32,4 @@ const CommentForm = ({ postId }) => {
 	);
 };
 
-export default CommentForm;
+export default PostForm;

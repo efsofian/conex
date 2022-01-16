@@ -8,7 +8,6 @@ module.exports = function (req, res, next) {
     try {
         const decoded = jwt.verify(token, process.env.MYSECRETTOKEN)
         req.user = decoded.user
-        console.log(req.user)
         next()
     } catch (e) {
         return res.status(401).json({ msg: "token is not valid" })

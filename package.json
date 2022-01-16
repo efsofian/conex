@@ -8,6 +8,8 @@
     "nodemon": "^2.0.15"
   },
   "scripts": {
-    "dev": "concurrently \"npm run dev --prefix back\" \"npm run start --prefix front\""
+    "dev": "concurrently \"npm run dev --prefix back\" \"npm run start --prefix front\"",
+    "start": "npm start --prefix back",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix back && npm install --prefix front && npm run build --prefix front"
   }
 }

@@ -48,11 +48,10 @@ const EditProfile = () => {
 			newInit.skills = profile.skills.join(",");
 		}
 		for (const key in profile.social) {
-			console.log("key:", key);
 			newInit[key] = profile.social[key];
 		}
-		console.log(newInit);
 		setformData(newInit);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [dispatch, loading]);
 	const onChange = (e) =>
 		setformData({ ...formData, [e.target.name]: e.target.value });

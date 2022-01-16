@@ -34,7 +34,6 @@ router.get("/github/:username", async (req, res) => {
         res.json(resp.data)
     } catch (e) {
         if (e.response.status === 404) {
-            console.log("coucou")
             return res.status(404).json({ msg: "No Github profile found" })
         }
         console.error(e)
@@ -176,9 +175,7 @@ router.put(
         }
 
         try {
-            console.log("hehaaa", req.user.id)
             const profile = await Profile.findOne({ user: req.user.id })
-            console.log("heheoo", profile)
             profile.experience.unshift(newExp)
             await profile.save()
             res.json(profile)
